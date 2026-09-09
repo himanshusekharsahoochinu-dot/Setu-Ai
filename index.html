@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SETU AI | Smart Industrial Approval Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="top-line"></div>
+
+<!-- ================= AUTH SCREEN ================= -->
+<section id="authScreen" class="auth-screen">
+
+    <div class="auth-container">
+
+        <div class="auth-brand">
+            <div class="logo">S</div>
+
+            <div>
+                <h1>SETU <span>AI</span></h1>
+                <p>Smart Industrial Approval Platform</p>
+            </div>
+        </div>
+
+        <div class="auth-card">
+
+            <div class="auth-tabs">
+                <button class="auth-tab active"
+                        id="userTab"
+                        onclick="switchLogin('user')">
+                    User Login
+                </button>
+
+                <button class="auth-tab"
+                        id="adminTab"
+                        onclick="switchLogin('admin')">
+                    Admin Login
+                </button>
+            </div>
+
+            <!-- USER LOGIN -->
+            <form id="userLoginForm" class="login-form">
+
+                <h2>Welcome Back</h2>
+
+                <p class="muted">
+                    Login to manage your industrial applications.
+                </p>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+
+                    <input
+                        type="email"
+                        id="userEmail"
+                        placeholder="user@setu.ai"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="userPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn primary full">
+                    Login as User
+                </button>
+
+            </form>
+
+            <!-- ADMIN LOGIN -->
+            <form id="adminLoginForm"
+                  class="login-form hidden">
+
+                <h2>Admin Portal</h2>
+
+                <p class="muted">
+                    Authorized administration access only.
+                </p>
+
+                <div class="form-group">
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        id="adminUsername"
+                        placeholder="admin"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn primary full">
+                    Login as Admin
+                </button>
+
+            </form>
+
+            <div class="demo-box">
+                <strong>Demo Credentials</strong>
+
+                <p>
+                    User:
+                    <code>user@setu.ai</code>
+                    /
+                    <code>user123</code>
+                </p>
+
+                <p>
+                    Admin:
+                    <code>admin</code>
+                    /
+                    <code>SETU@2026</code>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= MAIN APPLICATION ================= -->
+<section id="mainApp" class="main-app hidden">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="logo small">S</div>
+
+            <div>
+                <h2>SETU <span>AI</span></h2>
+                <small>Industrial Approval</small>
+            </div>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <button class="nav-item active"
+                    data-page="homePage">
+
+                <span>🏠</span>
+                <span>Dashboard</span>
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="applicationPage">
+
+                <span>📝</span>
+                <span>New Application</span>
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="myAppsPage">
+
+                <span>📂</span>
+                <span>My Applications</span>
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="trackingPage">
+
+                <span>📍</span>
+                <span>Track Application</span>
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="aiPage">
+
+                <span>🤖</span>
+                <span>SETU AI Assistant</span>
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="documentsPage">
+
+                <span>📄</span>
+                <span>Documents</span>
+
+            </button>
+
+            <button class="nav-item"
+                    data-page="receiptPage">
+
+                <span>🧾</span>
+                <span>Receipt</span>
+
+            </button>
+
+            <button id="adminNav"
+                    class="nav-item hidden"
+                    data-page="adminPage">
+
+                <span>⚙️</span>
+                <span>Admin Portal</span>
+
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="nav-item"
+                    onclick="toggleTheme()">
+
+                <span>🌙</span>
+                <span>Theme</span>
+
+            </button>
+
+            <button class="nav-item logout"
+                    onclick="logout()">
+
+                <span>🚪</span>
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- MOBILE HEADER -->
+        <header class="mobile-header">
+
+            <button onclick="toggleSidebar()" class="menu-btn">
+                ☰
+            </button>
+
+            <div class="mobile-logo">
+                SETU <span>AI</span>
+            </div>
+
+        </header>
+
+
+        <!-- ================= HOME ================= -->
+        <section id="homePage" class="page active-page">
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <span class="badge">
+                        🇮🇳 Digital India • Smart Governance
+                    </span>
+
+                    <h1>
+                        Simplifying Industrial Approvals
+                        with <span>SETU AI</span>
+                    </h1>
+
+                    <p>
+                        One intelligent platform for industrial approvals,
+                        compliance tracking, documentation and government
+                        support.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <button class="btn primary"
+                                onclick="showPage('applicationPage')">
+                            Start Application
+                        </button>
+
+                        <button class="btn secondary"
+                                onclick="showPage('aiPage')">
+                            Ask SETU AI
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-visual">
+
+                    <div class="ai-orbit">
+
+                        <div class="orbit-circle"></div>
+
+                        <div class="ai-core">
+                            <span>SETU</span>
+                            <small>AI</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div>
+                        <span>Total Applications</span>
+                        <strong id="totalApps">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card success-card">
+                    <div class="stat-icon">✅</div>
+                    <div>
+                        <span>Approved</span>
+                        <strong id="approvedApps">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card warning-card">
+                    <div class="stat-icon">⏳</div>
+                    <div>
+                        <span>Under Review</span>
+                        <strong id="reviewApps">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div>
+                        <span>Registered Users</span>
+                        <strong id="totalUsers">1</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+            <div class="section-heading">
+
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>Access important SETU services quickly.</p>
+                </div>
+
+            </div>
+
+            <div class="quick-grid">
+
+                <div class="quick-card"
+                     onclick="showPage('applicationPage')">
+
+                    <div class="quick-icon">📝</div>
+
+                    <h3>Apply for Approval</h3>
+
+                    <p>
+                        Submit a new industrial approval application.
+                    </p>
+
+                    <span>Start →</span>
+
+                </div>
+
+
+                <div class="quick-card"
+                     onclick="showPage('trackingPage')">
+
+                    <div class="quick-icon">📍</div>
+
+                    <h3>Track Application</h3>
+
+                    <p>
+                        Track your application status in real time.
+                    </p>
+
+                    <span>Track →</span>
+
+                </div>
+
+
+                <div class="quick-card"
+                     onclick="showPage('documentsPage')">
+
+                    <div class="quick-icon">📄</div>
+
+                    <h3>Document Checklist</h3>
+
+                    <p>
+                        View documents required for approvals.
+                    </p>
+
+                    <span>View →</span>
+
+                </div>
+
+
+                <div class="quick-card"
+                     onclick="showPage('aiPage')">
+
+                    <div class="quick-icon">🤖</div>
+
+                    <h3>SETU AI Assistant</h3>
+
+                    <p>
+                        Get instant guidance about approvals.
+                    </p>
+
+                    <span>Ask AI →</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= APPLICATION ================= -->
+        <section id="applicationPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>New Industrial Application</h1>
+                    <p>
+                        Submit your details to start the approval process.
+                    </p>
+                </div>
+
+                <div class="step-indicator">
+                    Step 1 of 3
+                </div>
+
+            </div>
+
+
+            <div class="form-card">
+
+                <form id="applicationForm">
+
+                    <div class="form-section">
+
+                        <h3>Applicant Information</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Applicant Name *</label>
+
+                                <input
+                                    type="text"
+                                    id="applicantName"
+                                    required
+                                    placeholder="Enter full name"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Company Name *</label>
+
+                                <input
+                                    type="text"
+                                    id="companyName"
+                                    required
+                                    placeholder="Company / Industry name"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email *</label>
+
+                                <input
+                                    type="email"
+                                    id="applicationEmail"
+                                    required
+                                    placeholder="company@example.com"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Mobile Number *</label>
+
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    required
+                                    placeholder="10 digit mobile number"
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-section">
+
+                        <h3>Business Information</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Business Type *</label>
+
+                                <select id="businessType" required>
+
+                                    <option value="">
+                                        Select business type
+                                    </option>
+
+                                    <option value="Manufacturing">
+                                        Manufacturing
+                                    </option>
+
+                                    <option value="Food Processing">
+                                        Food Processing
+                                    </option>
+
+                                    <option value="IT / Software">
+                                        IT / Software
+                                    </option>
+
+                                    <option value="Factory">
+                                        Factory
+                                    </option>
+
+                                    <option value="Service">
+                                        Service
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Approval Required *</label>
+
+                                <select id="approvalType" required>
+
+                                    <option value="">
+                                        Select approval
+                                    </option>
+
+                                    <option>
+                                        Industrial License
+                                    </option>
+
+                                    <option>
+                                        Pollution Clearance
+                                    </option>
+
+                                    <option>
+                                        Factory License
+                                    </option>
+
+                                    <option>
+                                        Fire Safety Approval
+                                    </option>
+
+                                    <option>
+                                        Food License
+                                    </option>
+
+                                    <option>
+                                        Multiple Approvals
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>State *</label>
+
+                                <input
+                                    type="text"
+                                    id="state"
+                                    value="Odisha"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>District *</label>
+
+                                <input
+                                    type="text"
+                                    id="district"
+                                    placeholder="Enter district"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Investment Amount</label>
+
+                                <input
+                                    type="number"
+                                    id="investment"
+                                    placeholder="₹ Amount"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Number of Employees</label>
+
+                                <input
+                                    type="number"
+                                    id="employees"
+                                    placeholder="Employees"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-section">
+
+                        <h3>Project Address</h3>
+
+                        <div class="form-group">
+
+                            <label>Complete Address *</label>
+
+                            <textarea
+                                id="address"
+                                rows="3"
+                                required
+                                placeholder="Enter industrial/project address"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-section">
+
+                        <h3>Business Activity</h3>
+
+                        <div class="form-group">
+
+                            <label>Describe your business activity *</label>
+
+                            <textarea
+                                id="activity"
+                                rows="4"
+                                required
+                                placeholder="Explain your proposed business activity..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-footer">
+
+                        <button
+                            type="reset"
+                            class="btn secondary">
+                            Clear
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="btn primary">
+                            Submit Application →
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MY APPLICATIONS ================= -->
+        <section id="myAppsPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>My Applications</h1>
+
+                    <p>
+                        View and manage your submitted applications.
+                    </p>
+                </div>
+
+            </div>
+
+            <div id="applicationsList"
+                 class="applications-list">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRACKING ================= -->
+        <section id="trackingPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Track Application</h1>
+
+                    <p>
+                        Check your application progress.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="track-search">
+
+                <input
+                    type="text"
+                    id="trackId"
+                    placeholder="Enter Application ID e.g. SETU-1001"
+                >
+
+                <button
+                    class="btn primary"
+                    onclick="trackApplication()">
+                    Track
+                </button>
+
+            </div>
+
+
+            <div id="trackingResult"
+                 class="tracking-result">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">📍</div>
+
+                    <h3>Enter an Application ID</h3>
+
+                    <p>
+                        Your application tracking information
+                        will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI ================= -->
+        <section id="aiPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>SETU AI Assistant</h1>
+
+                    <p>
+                        Get intelligent guidance for industrial approvals.
+                    </p>
+                </div>
+
+                <div class="ai-status">
+                    <span></span>
+                    AI Online
+                </div>
+
+            </div>
+
+
+            <div class="ai-layout">
+
+                <div class="chat-card">
+
+                    <div id="chatMessages"
+                         class="chat-messages">
+
+                        <div class="message ai-message">
+
+                            <div class="message-avatar">
+                                🤖
+                            </div>
+
+                            <div class="message-content">
+
+                                <strong>SETU AI</strong>
+
+                                <p>
+                                    Hello! I am SETU AI. I can help you
+                                    understand industrial approvals,
+                                    documents, compliance and application
+                                    tracking.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-questions">
+
+                        <button onclick="quickAsk('What documents are required?')">
+                            📄 Documents
+                        </button>
+
+                        <button onclick="quickAsk('How long does approval take?')">
+                            ⏱️ Approval Time
+                        </button>
+
+                        <button onclick="quickAsk('How can I track my application?')">
+                            📍 Track
+                        </button>
+
+                        <button onclick="quickAsk('What is pollution clearance?')">
+                            🌱 Pollution
+                        </button>
+
+                    </div>
+
+
+                    <div class="chat-input">
+
+                        <input
+                            type="text"
+                            id="chatInput"
+                            placeholder="Ask SETU AI anything..."
+                        >
+
+                        <button
+                            class="btn primary"
+                            onclick="sendMessage()">
+                            Send
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ai-info-card">
+
+                    <div class="ai-big-icon">
+                        🤖
+                    </div>
+
+                    <h2>How SETU AI Helps</h2>
+
+                    <ul>
+
+                        <li>
+                            ✓ Understand approval requirements
+                        </li>
+
+                        <li>
+                            ✓ Identify required documents
+                        </li>
+
+                        <li>
+                            ✓ Check application progress
+                        </li>
+
+                        <li>
+                            ✓ Explain compliance requirements
+                        </li>
+
+                        <li>
+                            ✓ Provide government support guidance
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DOCUMENTS ================= -->
+        <section id="documentsPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Document Checklist</h1>
+
+                    <p>
+                        Common documents required for industrial approvals.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="document-grid">
+
+                <div class="document-card">
+
+                    <div class="document-icon">
+                        🪪
+                    </div>
+
+                    <h3>Identity Documents</h3>
+
+                    <label>
+                        <input type="checkbox">
+                        Aadhaar / ID Proof
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        PAN Card
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Applicant Photograph
+                    </label>
+
+                </div>
+
+
+                <div class="document-card">
+
+                    <div class="document-icon">
+                        🏢
+                    </div>
+
+                    <h3>Business Documents</h3>
+
+                    <label>
+                        <input type="checkbox">
+                        Company Registration
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        GST Certificate
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Business Plan
+                    </label>
+
+                </div>
+
+
+                <div class="document-card">
+
+                    <div class="document-icon">
+                        🌱
+                    </div>
+
+                    <h3>Environmental Documents</h3>
+
+                    <label>
+                        <input type="checkbox">
+                        Pollution Consent
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Environmental Clearance
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Waste Management Plan
+                    </label>
+
+                </div>
+
+
+                <div class="document-card">
+
+                    <div class="document-icon">
+                        🔥
+                    </div>
+
+                    <h3>Safety Documents</h3>
+
+                    <label>
+                        <input type="checkbox">
+                        Fire Safety Certificate
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Factory Safety Plan
+                    </label>
+
+                    <label>
+                        <input type="checkbox">
+                        Emergency Plan
+                    </label>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECEIPT ================= -->
+        <section id="receiptPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <h1>Application Receipt</h1>
+
+                    <p>
+                        Download or print your application receipt.
+                    </p>
+                </div>
+
+                <button
+                    class="btn primary"
+                    onclick="window.print()">
+                    🖨 Print Receipt
+                </button>
+
+            </div>
+
+
+            <div id="receiptCard"
+                 class="receipt-card">
+
+                <div class="receipt-header">
+
+                    <div class="receipt-logo">
+                        S
+                    </div>
+
+                    <div>
+
+                        <h2>SETU AI</h2>
+
+                        <p>
+                            Smart Industrial Approval Platform
+                        </p>
+
+                    </div>
+
+                    <div class="receipt-label">
+                        APPLICATION RECEIPT
+                    </div>
+
+                </div>
+
+
+                <div class="receipt-body">
+
+                    <div class="receipt-row">
+
+                        <span>Application ID</span>
+
+                        <strong id="receiptId">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="receipt-row">
+
+                        <span>Applicant</span>
+
+                        <strong id="receiptApplicant">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="receipt-row">
+
+                        <span>Company</span>
+
+                        <strong id="receiptCompany">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="receipt-row">
+
+                        <span>Approval Type</span>
+
+                        <strong id="receiptApproval">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="receipt-row">
+
+                        <span>Status</span>
+
+                        <strong id="receiptStatus">
+                            —
+                        </strong>
+
+                    </div>
+
+                    <div class="receipt-row">
+
+                        <span>Submission Date</span>
+
+                        <strong id="receiptDate">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="receipt-footer">
+
+                    <p>
+                        This is a digitally generated receipt from SETU AI.
+                    </p>
+
+                    <span>
+                        Smart • Transparent • Faster
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ADMIN ================= -->
+        <section id="adminPage" class="page">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>Admin Dashboard</h1>
+
+                    <p>
+                        Manage industrial applications and approvals.
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn danger"
+                    onclick="adminLogout()">
+                    Admin Logout
+                </button>
+
+            </div>
+
+
+            <div class="admin-stats">
+
+                <div class="admin-stat">
+                    <span>Total</span>
+                    <strong id="adminTotal">0</strong>
+                </div>
+
+                <div class="admin-stat">
+                    <span>Pending</span>
+                    <strong id="adminPending">0</strong>
+                </div>
+
+                <div class="admin-stat">
+                    <span>Approved</span>
+                    <strong id="adminApproved">0</strong>
+                </div>
+
+                <div class="admin-stat">
+                    <span>Rejected</span>
+                    <strong id="adminRejected">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <h3>Application Management</h3>
+
+                    <span>
+                        Admin Control Center
+                    </span>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Applicant</th>
+                                <th>Company</th>
+                                <th>Approval</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="adminTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</section>
+
+
+<!-- ================= MODAL ================= -->
+<div id="modal"
+     class="modal hidden">
+
+    <div class="modal-overlay"
+         onclick="closeModal()"></div>
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+<div id="toast"
+     class="toast">
+
+    <span id="toastIcon">✓</span>
+
+    <span id="toastMessage">
+        Success
+    </span>
+
+</div>
+
+
+<footer class="footer">
+
+    <p>
+        © 2026 SETU AI — Smart Industrial Approval Platform
+    </p>
+
+    <p>
+        Built for Smart Governance & Digital India
+    </p>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
